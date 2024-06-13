@@ -19,9 +19,9 @@ class Repository {
             throw Error('error in getAll');
         }
     }
-    async getId(id) {
+    async getId(id1) {
         try {
-            const item = await this.model.findOne({volunteerId:id});
+            const item = await this.model.findOne({id:id1});
             if (!item) {
                 const error = new Error('item not found');
                 error.statusCode = 404;
@@ -38,16 +38,18 @@ class Repository {
     }
     async insert(date) {
         try {
-            const item = await this.model.create(date);
+            const item1 = new this.model(date);
+            // const item = await this.model.create(date);
             const changeStream = this.model.watch().on('change', change => console.log(change));
-
-            if (item)
+            
+            await item1.save();
+            if (item1)
                 return {
-                    error:false,
-                    statusCode:200,
-                    data:item
-                };
-            throw new Error('error in insert')
+            error:false,
+            statusCode:200,
+            data:item1
+        };
+        throw new Error('error in insert')
         } catch (err) {
             throw err;
         }
@@ -55,7 +57,7 @@ class Repository {
     async update(id, data) {
         try {
             // const item = await this.model.findByIdAndUpdate(id, data, { new: true });
-            const item = await this.model.updateOne({ volunteerId: id }, data);
+            const item = await this.model.updateOne({ id: id }, data);
             const changeStream = this.model.watch().on('change', change => console.log(change));
             
             if (!item) {
@@ -74,7 +76,7 @@ class Repository {
     }
     async delete(id) {
         try {
-            const item = await this.model.deleteMany({ volunteerId: id });
+            const item = await this.model.deleteMany({ id: id });
             if (!item) {
                 const error = new Error('item not found in delete');
                 error.statusCode = 404;

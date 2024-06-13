@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controller/VoluteerController');
-//api/volunteers/
+const controller = require('../controller/HelpReqestController.js');
+//api/helpReqests/
 router.get('/', controller.getAll);
 
 router.get('/:id', controller.getId)

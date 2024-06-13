@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const locationSchema = new mongoose.Schema({
-    locationId: Int32Array,
+    id: Number,
     location_name: String
 });
 

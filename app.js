@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 
 const volunteerRouter = require('./routers/volunteer.router.js');
+const helpReqestRouter = require('./routers/helpReqest.router.js');
+const locationRouter = require('./routers/location.router.js');
 
 const app = express();
 
@@ -11,6 +13,8 @@ const port = process.env.PORT;
 app.use(express.json());
 
 app.use('/api/volunteer', volunteerRouter);
+app.use('/api/helpReqest', helpReqestRouter);
+app.use('/api/location', locationRouter);
 
 app.use((err, req, res, next) => {
     console.log(err);

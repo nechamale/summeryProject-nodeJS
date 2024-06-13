@@ -19,7 +19,7 @@ class Controller {
     }
     async getId(req, res,next) {
         try {
-            const id = req.params.volunteerId
+            const id = req.params.id
             const result = await this.service.getId(id);
             return res.status(result.statusCode).json(result);
         } catch (error) {
@@ -27,7 +27,7 @@ class Controller {
             next(error);
         }
     }
-    async insert(req, res) {
+    async insert(req, res, next) {
         try {
             const data = req.body;
             const result = await this.service.insert(data);
@@ -40,7 +40,7 @@ class Controller {
     }
     async update(req, res, next) {
         try {
-            const id = req.params.volunteerId;
+            const id = req.params.id;
             const data = req.body;
             const result = await this.service.update(id, data);
             return res.status(result.statusCode).json(result);
@@ -52,7 +52,7 @@ class Controller {
     }
     async delete(req, res, next) {
         try {
-            const id = req.params.volunteerId;
+            const id = req.params.id;
             const response = await this.service.delete(id);
             return res.status(response.statusCode).json(response);
         } catch (err) {
