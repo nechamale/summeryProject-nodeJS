@@ -4,6 +4,8 @@ const controller = require('../controller/HelpReqestController.js');
 //api/helpReqests/
 router.get('/', controller.getAll);
 
+router.get('/noReply', controller.NoReply);
+
 router.get('/:id', controller.getId)
 
 router.post('/', controller.insert)

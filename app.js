@@ -20,6 +20,9 @@ app.use((err, req, res, next) => {
     console.log(err);
     res.status(500).send('An error occurred, please try later...');
 })
+
+
+
 app.listen(port, host, () => {
     //here we can do stuff that should be done once the server is up
     console.log(`express server is running at http://${host}:${port}/api/volunteer`);

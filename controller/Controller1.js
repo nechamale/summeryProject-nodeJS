@@ -12,8 +12,6 @@ class Controller {
             const result = await this.service.getAll(req.query);
             return res.json(result);
         } catch (error) {
-            // console.error(error);
-            // res.status(500).json({ message: 'Internal Server Error in getAll' });
             next(error);
         }
     }
