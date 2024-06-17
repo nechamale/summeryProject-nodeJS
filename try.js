@@ -38,3 +38,12 @@ const coll = client.db('Nodejs-Project').collection('volunteer');
 const cursor = coll.find(filter);
 const result = await cursor.toArray();
 await client.close();
+
+
+
+if(query.local){
+  location = noReply.filter(req => req === query.location);
+}
+
+if (location != null)
+  return location;
