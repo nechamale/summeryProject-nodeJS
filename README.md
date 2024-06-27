@@ -6,12 +6,10 @@ This project implements a server-side application for coordinating volunteers wi
 ## Table of Contents
 - [Features](#features)
 - [API Endpoints](#api-endpoints)
-- [Data Models](#data-models)
 - [Setup](#setup)
 - [Usage](#usage)
 - [Postman Collection](#postman-collection)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 1. **Help Requests List**: View unaddressed help requests with filters for location, status, and priority.
@@ -26,7 +24,6 @@ This project implements a server-side application for coordinating volunteers wi
 - `GET /api/requests`: Get a list of all help reqest
 - `GET /api/requests/:id`: Get details of a specific help request.
 - `GET /api/requests/noReply`: Get a list of unaddressed help requests with optional filters.
-- `POST /api/requests/:id/volunteer`: Volunteer for a specific help request (existing volunteer).
 - `POST /api/volunteers`: Register a new volunteer.
 
 ### Volunteers
@@ -60,8 +57,9 @@ This project implements a server-side application for coordinating volunteers wi
 3. **Setup environment variables:**
    Create a `.env` file in the root directory and add the following:
    ```env
-   MONGODB_URI=your_mongodb_uri
-   PORT=your_port
+   HOST='127.0.0.1'
+   PORT=8080
+   MONGODB_URI = 'mongodb+srv://sw0504147596:1234@cluster.vtbpacr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster'
    ```
 
 4. **Start the server:**
