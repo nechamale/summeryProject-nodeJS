@@ -1,4 +1,5 @@
 const Service = require('./Service.js');
+const VolunteerService = require('./Volunteer.js');
 const repo = require('../repositories/HelpReqestRepo.js')
 
 class HelpReqestService extends Service {
@@ -18,7 +19,7 @@ class HelpReqestService extends Service {
             const allRquest = await this.getAll({});
             const local = query.local;
             const priority = query.priority;
-            if (local&&priority) {
+            if (local && priority) {
                 const noReply = allRquest.filter(req => req.status === "waiting" && req.location == local & req.priority == priority);
                 return noReply;
             }
@@ -27,7 +28,7 @@ class HelpReqestService extends Service {
                 return noReply;
             }
             if (priority) {
-                const noReply = allRquest.filter(req => req.status === "waiting" && req.priority==priority)
+                const noReply = allRquest.filter(req => req.status === "waiting" && req.priority == priority)
                 return noReply;
             }
             const noReply = allRquest.filter(req => req.status === "waiting");
